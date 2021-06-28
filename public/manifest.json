@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+
+  "name": "Nullstack Devtools",
+  "version": "0.1",
+
+  "description": "Frontend Developer Tools for Nullstack",
+  "author": "acneidert[at]gmail.com",
+
+  "devtools_page": "main.html",
+
+  "permissions": ["activeTab", "scripting", "tabs"],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentscript.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+
+  "icons": {
+    "72": "img/icons/icon-72x72.png",
+    "96": "img/icons/icon-96x96.png",
+    "144": "img/icons/icon-144x144.png",
+    "128": "img/icons/icon-128x128.png"
+  }
+}
