@@ -50,11 +50,11 @@
 // 		file: 'installHook.js'
 // 	});
 // });
-let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    file: 'installHook.js' ,
-});
+// let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+// chrome.scripting.executeScript({
+//     target: { tabId: tab.id },
+//     file: 'installHook.js' ,
+// });
 console.log('Damit')
 // chrome.tabs.getSelected(null, function (tab) {
 //   chrome.tabs.executeScript(

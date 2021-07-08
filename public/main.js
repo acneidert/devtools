@@ -1,1 +1,1 @@
-chrome.devtools.panels.create('Nullstack', null, 'callIndex.html', null);
+chrome.devtools.panels.create('Nullstack', null, 'index.html', null);

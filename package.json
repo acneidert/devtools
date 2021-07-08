@@ -8,8 +8,8 @@
     "nullstack": "~0.11.0"
   },
   "scripts": {
-    "start": "npx nullstack start",
-    "build": "npx nullstack build --mode=ssg --output=build"
+    "start": "npx nullstack start --input=../devtools",
+    "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js"
   },
   "dependencies": {
     "bulma": "^0.9.2",
