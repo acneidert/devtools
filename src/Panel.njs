@@ -19,17 +19,15 @@ class Panel extends Nullstack {
   renderComponent({ name, attributes, instance }) {
     var attibutesDOM = '';
     Object.entries(attributes).map(([key, value]) => {
-      var val = value;
+      var val = typeof value === 'function' ? ` func ${value.name}` : value;
       if (key === 'children') return;
-      // if(typeof value === 'object') val = JSON.stringify(val);
-      // if(value instanceof Array ) val = `[${val.join(', ')}]`
       attibutesDOM = `${attibutesDOM} ${key}="${val}"`;
     });
 
     return (
       <li>
         <a onclick={this.setSelected} data-instance={instance}>
-          {`<${name}  ${attibutesDOM} />`}
+          {'< '}<big><b>{name}</b></big> <i>{attibutesDOM}</i> {' />'}
         </a>
       </li>
     );

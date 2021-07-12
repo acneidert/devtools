@@ -1,5 +1,6 @@
 import Nullstack from 'nullstack';
 import './Application.scss';
+import ComponentTest from './ComponentTest.njs';
 import InfoPanel from './InfoPanel.njs';
 import Panel from './Panel.njs';
 import SearchBar from './SearchBar.njs';
@@ -8,6 +9,7 @@ import formatName from './util/FormatName';
 class Application extends Nullstack {
   nullApp = null;
   selected = null;
+  testee = '';
 
   prepare({ page }) {
     page.locale = 'pt-BR';
@@ -18,10 +20,12 @@ class Application extends Nullstack {
       window.nullstack = this;
     }
 
+    // console.log(this);
+
     if (window.nullstack) {
       this.nullApp = window.nullstack;
     }
-    console.log('teste');
+    // console.log('teste');
     // if (typeof __NULLSTACK_DEVTOOLS_HOOK__ !== 'undefined') {
     //   __NULLSTACK_DEVTOOLS_HOOK__.subscribe('event_a', event => {
     //     console.log(event);
@@ -30,6 +34,10 @@ class Application extends Nullstack {
     // } else {
     //   console.log('Please install my awesome chrome extension 🙏');
     // }
+  }
+
+  renderTeste({thisValue}) {
+    return (<span>{thisValue}</span>)
   }
 
   renderHead() {
@@ -75,9 +83,12 @@ class Application extends Nullstack {
   render() {
     return (
       <main>
+        
+        <Teste thisValue="HAHAHAHHAH"/>
+        <ComponentTest newValue="pppppppp" />
         <Head />
         <div class="container">
-          NullStack Devtools
+          NullStack Devtools {this.testee}
           <div class="columns">
             <div class="column is-6">
               <SearchBar nullApp={this.nullApp} />
