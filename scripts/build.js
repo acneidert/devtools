@@ -8,7 +8,6 @@ try {
         fs.readFile(file, 'utf-8', function(error, data) {
             if (error) throw error;
             const script = data.match(/(<script([\s\S]*?)\/script>)/gm)[0];
-            // console.log(typeof script)
             const newIndex = data.replace(script, '<script src="index.js"></script>');
             const newScript = script.replace(/<script(.*?)>/g, '').replace(/<\/script>/g, '');
             fs.writeFile(file, newIndex, 'utf-8', () => {
@@ -20,7 +19,9 @@ try {
             
         });
     } 
-    console.log(`💥️ Can't find ${file} in ${process.cwd()}`);
+    else {
+        console.log(`💥️ Can't find ${file} in ${process.cwd()}`);
+    }
 } catch (err) {
     console.log(`💥️ [ERR] Can't find ${file} in ${process.cwd()}`);
 }
