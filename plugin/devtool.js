@@ -25,7 +25,7 @@ function transform(_context) {
     window.__NULLSTACK_COMPONENTS__.add(newNode, depth);
 }
 
-// function load(_context) {
-   
-// }
+function load(_context) {
+   return 
+}  
 export default { transform, load, client: true, server: false };

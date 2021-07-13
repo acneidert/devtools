@@ -5,6 +5,15 @@ class Node {
     constructor (data) {
         this.data = data
     }
+
+    _getData(name, arr) {
+        this.children.forEach((child) => {
+            child._getData(name, arr);
+        });
+        if(this.data === undefined || this.data === null ) return;
+        if(!(name in this.data)) return;
+        arr.push(this.data[name]);
+    }
 }
 
 export default class Tree {
@@ -28,4 +37,11 @@ export default class Tree {
         }
         node.data = data;
     }
+
+    getData(name) {
+        const arr = []
+        this.node._getData(name, arr);
+        return arr
+    }
+
 }

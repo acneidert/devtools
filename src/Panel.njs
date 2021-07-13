@@ -1,51 +1,59 @@
 import Nullstack from 'nullstack';
 import Third_Snake from './Third_Snake.njs';
 import formatName from './util/FormatName';
+import './Panel.scss';
 
 class Panel extends Nullstack {
   selected = null;
 
   getInstances({ nullApp = null }) {
     if (!nullApp) return {};
-    return nullApp._scope.instances;
+    const instan = nullApp.getData('instance');
+    return nullApp;
   }
 
   setSelected({ data, onchange }) {
-    this.selected = data.instance;
-    const value = data.instance;
-    onchange({ value, data });
+    // this.selected = data.instance;
+    // const value = data.instance;
+    // onchange({ value, data });
+    
   }
 
-  renderComponent({ name, attributes, instance }) {
-    var attibutesDOM = '';
-    Object.entries(attributes).map(([key, value]) => {
-      var val = typeof value === 'function' ? ` func ${value.name}` : value;
-      if (key === 'children') return;
-      attibutesDOM = `${attibutesDOM} ${key}="${val}"`;
+  renderInnerComponent(ctx) {
+    const {name} = ctx;
+    return <span class='inner' onclick={this.setSelected}>{name}</span>
+  }
+
+  renderComponent(ctx) {
+    const {name} = ctx;
+    console.log(ctx);
+    return <span class='component'>{name}</span>
+  }
+
+  renderTree({ node }) {
+    return node.children.map((el) => {
+      const ul = this.renderTree({ node: el });
+      if (!!el.data.name) {
+        return (
+          <li>
+            {el.data.type === 'COMPONENT' && <Component {...el.data} />}
+            {el.data.type === 'INNER' && <InnerComponent {...el.data} />}
+            {ul.lenght !== 0 && <ul>{ul}</ul>}
+          </li>
+        );
+      } else {
+        if (ul.lenght !== 0) {
+          return <>{ul}</>;
+        }
+      }
     });
-
-    return (
-      <li>
-        <a onclick={this.setSelected} data-instance={instance}>
-          {'< '}<big><b>{name}</b></big> <i>{attibutesDOM}</i> {' />'}
-        </a>
-      </li>
-    );
   }
 
-  render() {
+  render({ nullApp = [] }) {
+    if (nullApp === null) return false;
     return (
-      <div>
-        {Object.entries(this.getInstances()).map(([key, value]) => {
-          const name = formatName(value.constructor.name);
-          const attributes = value._attributes;
-          return (
-            <ul>
-              <Component instance={key} name={name} attributes={attributes} />
-            </ul>
-          );
-        })}
-        <Third_Snake data-teste={10} valor11="11" />
+      <div class="content">
+        <Tree node={nullApp.node} />
       </div>
     );
   }

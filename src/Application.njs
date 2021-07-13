@@ -5,6 +5,7 @@ import InfoPanel from './InfoPanel.njs';
 import Panel from './Panel.njs';
 import SearchBar from './SearchBar.njs';
 import formatName from './util/FormatName';
+import Third_Snake from './Third_Snake'
 
 class Application extends Nullstack {
   nullApp = null;
@@ -22,8 +23,8 @@ class Application extends Nullstack {
 
     // console.log(this);
 
-    if (window.nullstack) {
-      this.nullApp = window.nullstack;
+    if (window.__NULLSTACK_COMPONENTS__) {
+      this.nullApp = window.__NULLSTACK_COMPONENTS__;
     }
     // console.log('teste');
     // if (typeof __NULLSTACK_DEVTOOLS_HOOK__ !== 'undefined') {
@@ -106,6 +107,7 @@ class Application extends Nullstack {
             </div>
           </div>
         </div>
+        <Third_Snake />
       </main>
     );
   }
