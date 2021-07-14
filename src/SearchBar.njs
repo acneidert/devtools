@@ -6,26 +6,19 @@ class SearchBar extends Nullstack {
 
   render() {
     return (
-      <div class="columns is-mobile">
-        <div class="column is-1 is-hidden-mobile">
-          <button class="button">
+      <div class="grid grid-cols-6 btn-group">
+        <div>
+          <button class="btn">
             <span class="icon is-small">
               <i class="fas fa-hand-point-left"></i>
             </span>
           </button>
         </div>
-        <div class="column">
-          <input class="input is-normal " type="text" placeholder="Search" />
+        <div class="col-span-4">
+          <input type="text" placeholder="Search" class="input input-bordered" />
         </div>
-        <div class="column is-1 is-hidden-mobile">
-          <button class="button">
-            <span class="icon is-small">
-              <i class="fas fa-cog"></i>
-            </span>
-          </button>
-        </div>
-        <div class="column is-1 is-hidden-tablet">
-          <button class="button">
+        <div>
+          <button class="btn">
             <span class="icon is-small">
               <i class="fas fa-chevron-down"></i>
             </span>

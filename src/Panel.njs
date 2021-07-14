@@ -1,6 +1,4 @@
 import Nullstack from 'nullstack';
-import Third_Snake from './Third_Snake.njs';
-import formatName from './util/FormatName';
 import './Panel.scss';
 
 class Panel extends Nullstack {
@@ -36,18 +34,18 @@ class Panel extends Nullstack {
 
   renderTree({ node }) {
     return node.children.map((el, i) => {
-      const ul = this.renderTree({ node: el });
+      const ol = this.renderTree({ node: el });
       if (!!el.data.name) {
         return (
           <li key={`${el.data.name}${i}`}>
             {el.data.type === 'COMPONENT' && <Component {...el.data} />}
             {el.data.type === 'INNER' && <InnerComponent {...el.data} />}
-            {ul.lenght !== 0 && <ul>{ul}</ul>}
+            {ol.lenght !== 0 && <ol>{ol}</ol>}
           </li>
         );
       } else {
-        if (ul.lenght !== 0) {
-          return <>{ul}</>;
+        if (ol.lenght !== 0) {
+          return <>{ol}</>;
         }
       }
     });

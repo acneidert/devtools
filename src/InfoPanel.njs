@@ -1,6 +1,5 @@
 import Nullstack from 'nullstack';
 import _ from 'lodash';
-import bulmaDivider from 'bulma-divider';
 
 class InfoPanel extends Nullstack {
   
@@ -43,16 +42,16 @@ class InfoPanel extends Nullstack {
     return (
       <div>
         <ul>
-          <h2 class="subtitle">Properties</h2>
+          <h2 class="text-2xl font-semibold">Properties</h2>
           {this.getProps().map((prop) => (
             <li>
               <b>{prop[0]}:</b> {prop[1]}
             </li>
           ))}
         </ul>
-        <div class="is-divider"></div>
+        <div class="divider"></div> 
         <ul>
-          <h2 class="subtitle">Functions</h2>
+          <h2 class="text-2xl font-semibold">Functions</h2>
           {this.getFunctions().map((prop) => {
             const func = prop[1].name;
             var type = 'function';
@@ -61,7 +60,9 @@ class InfoPanel extends Nullstack {
             if (func ==='_invoke') type = 'serverFunction'
             return (
              <li>
-               <i>{type}</i> <b>{prop[0]}:</b>
+               <div data-tip={type} class="tooltip tooltip-left">
+                  <b>{prop[0]}:</b>
+               </div>
                {/* <Function name={prop[0]} func={} /> */}
              </li>
            )

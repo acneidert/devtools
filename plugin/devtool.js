@@ -23,7 +23,6 @@ function transform(_context) {
         newNode.attributes = node.attributes;
         newNode.instance = null;
         newNode.keyComponent = `${instance}-${newNode.name}`;
-        // console.log(_context)
     }
     window.__NULLSTACK_COMPONENTS__.add(newNode, depth);
 }
