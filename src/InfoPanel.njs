@@ -25,17 +25,6 @@ class InfoPanel extends Nullstack {
     return _.toPairs(_.pickBy(this.getInstance(), _.isFunction));
   }
 
-  hydrate() {
-    bulmaDivider;
-  }
-
-  renderFunction({name, func}) {
-    console.log(func);
-    
-    
-    return <></>
-  }
-  
   render({instance = null }) {
     if(!instance) return false
     const lifecycle = ['prepare', 'initiate', 'hydrate', 'update', 'terminate']
@@ -54,10 +43,14 @@ class InfoPanel extends Nullstack {
           <h2 class="text-2xl font-semibold">Functions</h2>
           {this.getFunctions().map((prop) => {
             const func = prop[1].name;
-            var type = 'function';
-            if (lifecycle.includes(func)) type = 'lifecycle'
-            if (func.startsWith('render')) type = 'render'
-            if (func ==='_invoke') type = 'serverFunction'
+            var type = 'Function';
+            if (func ==='render'){
+              type = 'Render Function'
+            } else {
+              if (lifecycle.includes(func)) type = 'Lifecycle'
+              if (func.startsWith('render')) type = 'Inner Component'
+              if (func ==='_invoke') type = 'Server Function'
+            }
             return (
              <li>
                <div data-tip={type} class="tooltip tooltip-left">

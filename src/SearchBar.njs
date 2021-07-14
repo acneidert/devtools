@@ -6,18 +6,18 @@ class SearchBar extends Nullstack {
 
   render() {
     return (
-      <div class="grid grid-cols-6 btn-group">
-        <div>
+      <div class="flex mr-5 mt-2 mb-0">
+        <div class="flex-none mr-5">
           <button class="btn">
             <span class="icon is-small">
               <i class="fas fa-hand-point-left"></i>
             </span>
           </button>
         </div>
-        <div class="col-span-4">
-          <input type="text" placeholder="Search" class="input input-bordered" />
+        <div class="flex-grow mr-5">
+          <input type="text" placeholder="Search" class="input input-bordered w-full" />
         </div>
-        <div>
+        <div class="flex-none">
           <button class="btn">
             <span class="icon is-small">
               <i class="fas fa-chevron-down"></i>

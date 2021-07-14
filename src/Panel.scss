@@ -1,8 +1,137 @@
 .component {
-    background-color: aqua;
-    color: black;
+  background-color: aqua;
+  color: black;
 }
 
 .inner {
-    background-color: brown;
+  background-color: brown;
+}
+
+/*Tree*/
+.tree-box{
+  label {
+    font-weight: normal;
+    padding-left: 20px;
+  }
+  ul,
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+}
+
+.trees {
+  margin-left: 10px;
+}
+
+.trees li {
+  border-left: dotted 1px #bcbec0;
+  padding: 1px 0 1px 25px;
+  position: relative;
+}
+
+.trees li > label {
+  position: relative;
+  left: -11px;
+}
+
+.trees li:before {
+  content: '';
+  width: 13px;
+  height: 1px;
+  border-bottom: dotted 1px #bcbec0;
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+.trees li:last-child:after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 13px;
+  // background: #fff;
+  left: -1px;
+  bottom: 0px;
+}
+
+.trees li input {
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-left: 10px;
+  background-color: blue;
+}
+
+.trees li.has-child > ul {
+  display: none;
+}
+
+.trees li.has-child > input {
+  opacity: 0;
+  position: absolute;
+  left: 2px;
+  z-index: 9999;
+  width: 22px;
+  height: 22px;
+  // top: -4px;
+  border-color: aqua;
+  // padding-left: 10px;
+}
+
+.trees li.has-child > input + .tree-control {
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  line-height: 8px;
+  z-index: 2;
+  display: inline-block;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.trees li.has-child > input + .tree-control:before {
+  font-family: 'Font Awesome 5 Pro';
+  content: '';
+  position: absolute;
+  // left: 1px;
+  display: inline-block;
+  // padding-left: 15px;
+  vertical-align: middle;
+  font-weight: 900;
+  font-size: larger;
+}
+
+.trees li.has-child > input:checked + .tree-control:before {
+  font-family: 'Font Awesome 5 Pro';
+  content: '\f146';
+  display: inline-block;
+  // padding-left: 15px;
+  vertical-align: middle;
+  font-weight: 900;
+  font-size: larger;
+}
+
+.trees li.has-child > input:checked ~ ul {
+  display: block;
+}
+
+.trees ul li.has-child:last-child {
+  border-left: none;
+}
+
+.trees ul li.has-child:nth-last-child(2):after {
+  content: '';
+  width: 1px;
+  height: 5px;
+  border-left: dotted 1px #bcbec0;
+  position: absolute;
+  bottom: -5px;
+  left: -1px;
+}
+
+.tree-alt li {
+  padding: 4px 0;
 }

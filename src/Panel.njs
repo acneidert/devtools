@@ -14,9 +14,15 @@ class Panel extends Nullstack {
   }
 
   renderInnerComponent(ctx) {
-    const {name, keyComponent} = ctx;
-    return (<span class='inner' onclick={this.setSelected} data-key={keyComponent}>
-      {name}
+    const {name, keyComponent, attributes} = ctx;
+    var attribs = ''
+    Object.entries(attributes).map(
+      value => attribs = `${attribs} ${value[0]}=${value[1] === '' ? '' : value[1]}`
+    );
+      
+    
+    return (<span class='link link-secondary' onclick={this.setSelected} data-key={keyComponent}>
+     <b>{name}</b> <i>{attribs}</i>
     </span>);
   }
 
@@ -24,28 +30,33 @@ class Panel extends Nullstack {
     const {name, keyComponent} = ctx;
     return (
     <a 
-      class='component' 
+      class='link link-primary' 
       onclick={this.setSelected} 
       data-key={keyComponent}
     >
-      {name}
+      <b>{name}</b>
     </a>);
   }
 
   renderTree({ node }) {
     return node.children.map((el, i) => {
-      const ol = this.renderTree({ node: el });
+      const ul = this.renderTree({ node: el });
       if (!!el.data.name) {
+        const klassLi = ul.lenght !== 0 ? 'has-child' : '';
         return (
-          <li key={`${el.data.name}${i}`}>
-            {el.data.type === 'COMPONENT' && <Component {...el.data} />}
-            {el.data.type === 'INNER' && <InnerComponent {...el.data} />}
-            {ol.lenght !== 0 && <ol>{ol}</ol>}
+          <li class={klassLi} key={`${el.data.name}${i}`}>
+              <input id="tree-controll1" type="checkbox"/>
+              <span class="tree-control"></span>
+            <label>
+              {el.data.type === 'COMPONENT' && <Component {...el.data} />}
+              {el.data.type === 'INNER' && <InnerComponent {...el.data} />}
+            </label>
+            {ul.lenght !== 0 && <ul>{ul}</ul>}
           </li>
         );
       } else {
-        if (ol.lenght !== 0) {
-          return <>{ol}</>;
+        if (ul.lenght !== 0) {
+          return <>{ul}</>;
         }
       }
     });
@@ -54,8 +65,10 @@ class Panel extends Nullstack {
   render({ nullApp = [] }) {
     if (nullApp === null) return false;
     return (
-      <div class="content">
-        <Tree node={nullApp.node} />
+      <div class="tree-box box-border">
+        <ul class="trees">
+          <Tree node={nullApp.node} />
+        </ul>
       </div>
     );
   }
