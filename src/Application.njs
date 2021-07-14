@@ -12,6 +12,9 @@ class Application extends Nullstack {
   selected = null;
   testee = '';
 
+  initiate(){
+    require('../public/tailwind.css');
+  }
   prepare({ page }) {
     page.locale = 'pt-BR';
   }

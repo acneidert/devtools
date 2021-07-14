@@ -5,18 +5,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nullstack": "~0.11.0"
+    "autoprefixer": "^10.3.1",
+    "nullstack": "~0.11.0",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
   },
   "scripts": {
     "start": "npx nullstack start --input=../devtools",
-    "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js"
+    "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js",
+    "style": "npx tailwindcss-cli build -o public/tailwind.css"
   },
   "dependencies": {
-    "bulma": "^0.9.2",
-    "bulma-divider": "^0.2.0",
-    "bulma-extensions": "^6.2.7",
-    "bulma-prefers-dark": "0.1.0-beta.0",
     "console-log-colors": "^0.1.0",
+    "daisyui": "^1.9.0",
     "lodash": "^4.17.21"
   }
 }

@@ -1,22 +1,3 @@
-// * {
-//   padding: 0;
-//   margin: 0;
-//   text-decoration: none;
-//   list-style: none;
-//   box-sizing: border-box;
-// }
-
-// body {
-//   background-color: #2d3748;
-//   color: #fff;
-//   font-family: 'Roboto', sans-serif;
-// }
-
-// a {
-//   color: #ddbc72;
-//   margin-left: .3em;
-// }
-
-@import "../node_modules/bulma/bulma.sass";
-@import "../node_modules/bulma-prefers-dark/bulma-prefers-dark.sass";
-@import "../node_modules/bulma-divider/dist/css/bulma-divider.sass";
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
