@@ -3,9 +3,12 @@ import _ from 'lodash';
 import bulmaDivider from 'bulma-divider';
 
 class InfoPanel extends Nullstack {
+  
+  node = null
+
   getInstance({ nullApp = null, instance = null }) {
-    if (!nullApp || !instance) return {};
-    return nullApp._scope.instances[instance];
+    this.node = nullApp.getNodeBydata('keyComponent', instance ); 
+    return this.node.instance
   }
 
   getProps() {
@@ -27,8 +30,16 @@ class InfoPanel extends Nullstack {
     bulmaDivider;
   }
 
+  renderFunction({name, func}) {
+    console.log(func);
+    
+    
+    return <></>
+  }
+  
   render({instance = null }) {
     if(!instance) return false
+    const lifecycle = ['prepare', 'initiate', 'hydrate', 'update', 'terminate']
     return (
       <div>
         <ul>
@@ -42,11 +53,19 @@ class InfoPanel extends Nullstack {
         <div class="is-divider"></div>
         <ul>
           <h2 class="subtitle">Functions</h2>
-          {this.getFunctions().map((prop) => (
-            <li>
-              <b>{prop[0]}:</b> {prop[1]}
-            </li>
-          ))}
+          {this.getFunctions().map((prop) => {
+            const func = prop[1].name;
+            var type = 'function';
+            if (lifecycle.includes(func)) type = 'lifecycle'
+            if (func.startsWith('render')) type = 'render'
+            if (func ==='_invoke') type = 'serverFunction'
+            return (
+             <li>
+               <i>{type}</i> <b>{prop[0]}:</b>
+               {/* <Function name={prop[0]} func={} /> */}
+             </li>
+           )
+          })}
         </ul>
       </div>
     );

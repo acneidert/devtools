@@ -6,14 +6,15 @@ function transform(_context) {
     const {node, depth, instances} = _context;
     if (!window.__NULLSTACK_COMPONENTS__) window.__NULLSTACK_COMPONENTS__ = new Tree();
     const newNode = {}
+    const instance = depth.join('-') === '0' ? 'application' : `n-${depth.join('-')}`;
     
     if(isClass(node)) {
-        const instance = depth.join('-') === '0' ? 'application' : `n-${depth.join('-')}`;
         newNode.type = 'COMPONENT';
         newNode.name = node.type.name;
         newNode.definition = node.type;
         newNode.attributes = node.attributes;
-        newNode.instance = instances[instance];
+        newNode.instance = instances[node.attributes.key || instance];
+        newNode.keyComponent = node.attributes.key || instance;
     }
     else if(isFunction(node)) {
         newNode.type = 'INNER';
@@ -21,6 +22,8 @@ function transform(_context) {
         newNode.definition = node.type;
         newNode.attributes = node.attributes;
         newNode.instance = null;
+        newNode.keyComponent = `${instance}-${newNode.name}`;
+        // console.log(_context)
     }
     window.__NULLSTACK_COMPONENTS__.add(newNode, depth);
 }

@@ -54,15 +54,14 @@ class Application extends Nullstack {
     );
   }
 
-  getInstances() {
-    if (!this.nullApp) return {};
-    return this.nullApp._scope.instances;
+  getInstance() {
+    return this.nullApp.getNodeBydata('keyComponent', this.selected )
   }
 
   renderNameComponent({ nullApp }) {
     var name = ' ';
     if (this.selected) {
-      name = formatName(this.getInstances()[this.selected].constructor.name);
+      name = this.getInstance().name;
     }
     return (
       <div class="columns">
@@ -77,9 +76,9 @@ class Application extends Nullstack {
     this.selected = value;
   }
 
-  getInstances({ instances }) {
-    return instances;
-  }
+  // getInstances({ instances }) {
+  //   return instances;
+  // }
 
   render() {
     return (
@@ -108,6 +107,9 @@ class Application extends Nullstack {
           </div>
         </div>
         <Third_Snake />
+        <Third_Snake />
+        <Third_Snake key="0000"/>
+        <Third_Snake key="1111"/>
       </main>
     );
   }

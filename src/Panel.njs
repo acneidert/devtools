@@ -4,38 +4,42 @@ import formatName from './util/FormatName';
 import './Panel.scss';
 
 class Panel extends Nullstack {
+  
   selected = null;
 
-  getInstances({ nullApp = null }) {
-    if (!nullApp) return {};
-    const instan = nullApp.getData('instance');
-    return nullApp;
-  }
+  setSelected({ nullApp, data, onchange }) {
+    // console.log()
+    this.selected = data.key
+    const value = data.key;
+    onchange({ value, data });
 
-  setSelected({ data, onchange }) {
-    // this.selected = data.instance;
-    // const value = data.instance;
-    // onchange({ value, data });
-    
   }
 
   renderInnerComponent(ctx) {
-    const {name} = ctx;
-    return <span class='inner' onclick={this.setSelected}>{name}</span>
+    const {name, keyComponent} = ctx;
+    return (<span class='inner' onclick={this.setSelected} data-key={keyComponent}>
+      {name}
+    </span>);
   }
 
   renderComponent(ctx) {
-    const {name} = ctx;
-    console.log(ctx);
-    return <span class='component'>{name}</span>
+    const {name, keyComponent} = ctx;
+    return (
+    <a 
+      class='component' 
+      onclick={this.setSelected} 
+      data-key={keyComponent}
+    >
+      {name}
+    </a>);
   }
 
   renderTree({ node }) {
-    return node.children.map((el) => {
+    return node.children.map((el, i) => {
       const ul = this.renderTree({ node: el });
       if (!!el.data.name) {
         return (
-          <li>
+          <li key={`${el.data.name}${i}`}>
             {el.data.type === 'COMPONENT' && <Component {...el.data} />}
             {el.data.type === 'INNER' && <InnerComponent {...el.data} />}
             {ul.lenght !== 0 && <ul>{ul}</ul>}

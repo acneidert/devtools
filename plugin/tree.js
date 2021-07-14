@@ -14,6 +14,20 @@ class Node {
         if(!(name in this.data)) return;
         arr.push(this.data[name]);
     }
+
+    _getNodeBydata(name, value, partial = false) {
+        if(this.data !== undefined && this.data !== null ) {
+            if((name in this.data)) {
+                if(this.data[name] === value) return this.data;
+            }
+        }
+        var find = null;
+        for (var i = 0; i < this.children.length; i++) {
+            find = this.children[i]._getNodeBydata(name, value, partial);
+            if (find !== null) break;
+        }
+        return find;
+    }
 }
 
 export default class Tree {
@@ -42,6 +56,10 @@ export default class Tree {
         const arr = []
         this.node._getData(name, arr);
         return arr
+    }
+
+    getNodeBydata(name, value, partial = false) {
+        return this.node._getNodeBydata(name, value, partial = false);
     }
 
 }
