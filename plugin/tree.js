@@ -6,6 +6,7 @@ class Node {
         this.data = data
     }
 
+    
     _getData(name, arr) {
         this.children.forEach((child) => {
             child._getData(name, arr);
@@ -35,6 +36,10 @@ export default class Tree {
 
     constructor(data = null) {
         this.node = new Node(data);
+    }
+
+    toJson() {
+        return JSON.stringify(this)
     }
 
     toString() {

@@ -4,6 +4,8 @@ import InfoPanel from './InfoPanel.njs';
 import Panel from './Panel.njs';
 import SearchBar from './SearchBar.njs';
 
+import { _getNodeBydata } from './util/nodes';
+
 class Application extends Nullstack {
   nullApp = null;
   selected = null;
@@ -23,9 +25,34 @@ class Application extends Nullstack {
     }
 
     if (window.__NULLSTACK_COMPONENTS__) {
-      this.nullApp = window.__NULLSTACK_COMPONENTS__;
+      this.nullApp = JSON.parse(JSON.stringify(window.__NULLSTACK_COMPONENTS__));
     }
-    
+
+    if (!!chrome.devtools) {
+      chrome.devtools.inspectedWindow.eval(
+        "__NULLSTACK_COMPONENTS__.toJson()", 
+        (res) => {
+          this.nullApp = JSON.parse(res);
+        });
+    }
+  }
+
+  update() {
+    if (environment.development) {
+      window.nullstack = this;
+    }
+
+    if (window.__NULLSTACK_COMPONENTS__) {
+      this.nullApp = JSON.parse(JSON.stringify(window.__NULLSTACK_COMPONENTS__));
+    }
+
+    if (!!chrome.devtools) {
+      chrome.devtools.inspectedWindow.eval(
+        "__NULLSTACK_COMPONENTS__.toJson()", 
+        (res) => {
+          this.nullApp = JSON.parse(res);
+        });
+    }
   }
 
   renderTeste({thisValue}) {
@@ -45,8 +72,9 @@ class Application extends Nullstack {
     );
   }
 
+  
   getInstance() {
-    return this.nullApp.getNodeBydata('keyComponent', this.selected )
+    return _getNodeBydata('keyComponent', this.selected, this.nullApp.node )
   }
 
   renderNameComponent() {
