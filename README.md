@@ -1,28 +1,58 @@
-# Devtools
+# Devtools - Alfa of Alfa
+
+## Warning this is on Alfa test and has a lot of bugs
+
+### This Devtool works on Chromium based browsers
+### Mozilla's browsers will be implemented soon
 
 <img src='https://raw.githubusercontent.com/nullstack/nullstack/master/nullstack.png' height='60' alt='Nullstack' />
 
-## How to run this Project
+### Build Devtools
 
 Install the dependencies:
-
+`npm link`
 `npm install`
 
-Copy the environment sample to a .env file
+In the previous folder, clone nullstack from this repository 
+https://github.com/acneidert/nullstack 
 
-```sh
-NULLSTACK_PROJECT_NAME="[dev] Devtools"
-NULLSTACK_PROJECT_DOMAIN="localhost"
-NULLSTACK_PROJECT_COLOR="#D22365"
-NULLSTACK_SERVER_PORT="5000"
+Go to newDevTools branch and run 
+
+`npm link`
+
+in the devtools folder, run
+
+`npm link nullstack`
+  and 
+`npm build` 
+
+### Install plugin on browser
+
+In the chrome, goes to 
+ * Goto Chrome Settings using three dots on the top right corner.
+ ![IMG 01](/wiki/01.PNG )
+
+ * Goto to More Tools and Extensions.
+ ![IMG 02](/wiki/02.PNG )
+
+ * Eneable developer tools and Load Unpacked
+  ![IMG 03](/wiki/03.PNG )
+
+
+### Install plugin on nullstack app
+
+Go to your project and run 
+`npm link devtools`
+
+on index.js insert:
+```js 
+import devtools from 'devtools/plugin/devtool'
+
+Nullstack.use(devtools);
+
 ```
 
-Run the app in development mode:
+Now Enjoy
 
-`npm start`
 
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
-
-## Learn more about Nullstack
-
-[Read the documentation](https://nullstack.app/documentation)
+ 
