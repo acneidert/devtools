@@ -30,6 +30,7 @@ class Panel extends Nullstack {
      <b>{name}</b> <i>{attribs}</i>
     </span>);
   }
+  
 
   renderComponent(ctx) {
     const {name, keyComponent, attributes} = ctx;
