@@ -24,7 +24,7 @@ in the devtools folder, run
 
 `npm link nullstack`
   and 
-`npm build` 
+`npm run build` 
 
 ### Install plugin on browser
 
