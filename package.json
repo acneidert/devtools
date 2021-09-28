@@ -1,15 +1,27 @@
 {
-  "name": "devtools",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "license": "ISC",
+  "name": "@acneidert/devtools",
+  "version": "0.0.2",
+  "description": "Nullstack devtools",
+  "author": "André Neidert <acneidert[at]gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "nullstack": "~0.11.0",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
   },
+  "keywords": [
+    "nullstack",
+    "devtools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acneidert/devtools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/acneidert/devtools/issues"
+  },
+  "homepage": "https://github.com/acneidert/devtools#readme",
   "scripts": {
     "start": "npx nullstack start --input=../devtools",
     "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js",
@@ -19,5 +31,6 @@
     "console-log-colors": "^0.1.0",
     "daisyui": "^1.9.0",
     "lodash": "^4.17.21"
-  }
+  },
+  "main": "index.js"
 }

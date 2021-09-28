@@ -5,3 +5,7 @@ package-lock.json
 yarn.lock
 .env
 build
+build.zip
+build.tar.gz
+build.crx
+build.pem
