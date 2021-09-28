@@ -1,3 +1,3 @@
-import devtools from 'devtools/plugin/devtool'
+import devtools from './plugin/devtool'
 
 export default  devtools;
