@@ -1,6 +1,6 @@
 {
   "name": "@acneidert/devtools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nullstack devtools",
   "author": "André Neidert <acneidert[at]gmail.com>",
   "license": "MIT",
@@ -8,7 +8,10 @@
     "autoprefixer": "^10.3.1",
     "nullstack": "~0.11.0",
     "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4"
+    "tailwindcss": "^2.2.4",
+    "console-log-colors": "^0.1.0",
+    "daisyui": "^1.9.0",
+    "lodash": "^4.17.21"
   },
   "keywords": [
     "nullstack",
@@ -27,10 +30,6 @@
     "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js",
     "style": "npx tailwindcss-cli build -o public/tailwind.css"
   },
-  "dependencies": {
-    "console-log-colors": "^0.1.0",
-    "daisyui": "^1.9.0",
-    "lodash": "^4.17.21"
-  },
+  "dependencies": {},
   "main": "index.js"
 }
