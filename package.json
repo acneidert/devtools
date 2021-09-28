@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "Nullstack devtools",
   "author": "André Neidert <acneidert[at]gmail.com>",
+  "main": "main.js",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.3.1",
@@ -30,6 +31,5 @@
     "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js",
     "style": "npx tailwindcss-cli build -o public/tailwind.css"
   },
-  "dependencies": {},
-  "main": "index.js"
+  "dependencies": {}
 }
