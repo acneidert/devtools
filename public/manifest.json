@@ -2,14 +2,14 @@
   "manifest_version": 3,
 
   "name": "Nullstack Devtools",
-  "version": "0.1",
+  "version": "0.2",
 
   "description": "Frontend Developer Tools for Nullstack",
   "author": "acneidert[at]gmail.com",
 
   "devtools_page": "main.html",
 
-  "permissions": ["activeTab", "scripting", "tabs"],
+  "permissions": ["activeTab", "scripting"],
 
   "content_scripts": [
     {
