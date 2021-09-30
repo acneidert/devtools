@@ -7,12 +7,10 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.3.1",
-    "nullstack": "~0.11.0",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4",
     "console-log-colors": "^0.1.0",
-    "daisyui": "^1.9.0",
-    "lodash": "^4.17.21"
+    "daisyui": "^1.9.0"
   },
   "keywords": [
     "nullstack",
@@ -27,9 +25,12 @@
   },
   "homepage": "https://github.com/acneidert/devtools#readme",
   "scripts": {
-    "start": "npx nullstack start --input=../devtools",
-    "build": "npx nullstack build --mode=ssg --output=build --input=../devtools && node ./scripts/build.js",
+    "start": "npx nullstack start",
+    "build": "npx nullstack build --mode=ssg --output=build && node ./scripts/build.js",
     "style": "npx tailwindcss-cli build -o public/tailwind.css"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "nullstack": "^0.11.6"
+  }
 }
