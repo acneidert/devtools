@@ -7,46 +7,21 @@
 
 <img src='https://raw.githubusercontent.com/nullstack/nullstack/master/nullstack.png' height='60' alt='Nullstack' />
 
-### Build Devtools
-
-Install the dependencies:
-`npm link`
-`npm install`
-
-In the previous folder, clone nullstack from this repository 
-https://github.com/acneidert/nullstack 
-
-Go to newDevTools branch and run 
-
-`npm link`
-
-in the devtools folder, run
-
-`npm link nullstack`
-  and 
-`npm run build` 
+## How to use
 
 ### Install plugin on browser
-
-In the chrome, goes to 
- * Goto Chrome Settings using three dots on the top right corner.
- ![IMG 01](/wiki/01.PNG )
-
- * Goto to More Tools and Extensions.
- ![IMG 02](/wiki/02.PNG )
-
- * Eneable developer tools and Load Unpacked
-  ![IMG 03](/wiki/03.PNG )
+ [Install](https://chrome.google.com/webstore/detail/nullstack-devtools/jbeglhfidlkdojonbjobjpbbjmjlhgjg) Nullstack Devtool Plugin for chromium based
 
 
 ### Install plugin on nullstack app
 
 Go to your project and run 
-`npm link devtools`
+`npm i @acneidert/devtools`
 
-on index.js insert:
+on your index.js insert:
+
 ```js 
-import devtools from 'devtools/plugin/devtool'
+import devtools from '@acneidert/devtools';
 
 Nullstack.use(devtools);
 
