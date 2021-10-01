@@ -30,4 +30,12 @@ Nullstack.use(devtools);
 Now Enjoy
 
 
+## TODO
+  - [ ] Transform Properties objects in a treeview
+  - [ ] Change values on Properties and reflect on application
+  - [ ] Make server functions callable 
+  - [ ] Find best collors on UI
+  - [ ] Make search bar usable
+  - [ ] Add light and dark mode
+  - [ ] Find a way to test this and make tests
  
