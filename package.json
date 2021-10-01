@@ -1,6 +1,6 @@
 {
   "name": "@acneidert/devtools",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Nullstack devtools",
   "author": "André Neidert <acneidert[at]gmail.com>",
   "main": "main.js",
