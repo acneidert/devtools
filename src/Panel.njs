@@ -6,7 +6,6 @@ class Panel extends Nullstack {
   selected = null;
 
   setSelected({ nullApp, data, onchange }) {
-    // console.log()
     this.selected = data.key
     const value = data.key;
     onchange({ value, data });

@@ -38,4 +38,5 @@ Now Enjoy
   - [ ] Make search bar usable
   - [ ] Add light and dark mode
   - [ ] Find a way to test this and make tests
+  - [ ] Access to context
  
