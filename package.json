@@ -10,7 +10,8 @@
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4",
     "console-log-colors": "^0.1.0",
-    "daisyui": "^1.9.0"
+    "daisyui": "^1.9.0",
+    "theme-change": "^2.0.2"
   },
   "keywords": [
     "nullstack",
@@ -26,11 +27,11 @@
   "homepage": "https://github.com/acneidert/devtools#readme",
   "scripts": {
     "start": "npx nullstack start",
-    "build": "npx nullstack build --mode=ssg --output=build && node ./scripts/build.js",
+    "build": "npx tailwindcss-cli build -o public/tailwind.css && npx nullstack build --mode=ssg --output=build && node ./scripts/build.js",
     "style": "npx tailwindcss-cli build -o public/tailwind.css"
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "nullstack": "^0.11.6"
+    "nullstack": "^0.13.0"
   }
 }

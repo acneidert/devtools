@@ -5,6 +5,8 @@
 ### This Devtool works on Chromium based browsers
 ### Mozilla's browsers will be implemented soon
 
+### Works on Nullstack ^0.13
+
 <img src='https://raw.githubusercontent.com/nullstack/nullstack/master/nullstack.png' height='60' alt='Nullstack' />
 
 ## How to use

@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import {isClass, isFunction} from 'nullstack/shared/nodes';
+import generateKey from 'nullstack/shared/generateKey';
 import Tree from './tree';
 
 function getFunctions(instance) {
@@ -23,8 +24,9 @@ function transform(_context) {
     if(environment.production) return;
     if (!window.__NULLSTACK_COMPONENTS__) window.__NULLSTACK_COMPONENTS__ = new Tree();
     const newNode = {}
-    const instance = depth.join('-') === '0' ? 'application' : `n-${depth.join('-')}`;
     if(isClass(node)) {
+        console.log(node)
+        const instance = depth.join('-') === '0' ? 'application' : generateKey(node, depth);
         const classInstance = instances[node.attributes.key || instance];
         const functions = getFunctions(classInstance);
         const props = getProps(classInstance);
@@ -62,13 +64,25 @@ function transform(_context) {
                  value: `${prop[1]}`
             });
         })
+        console.log('att', node)
 
-        newNode.attributes = Object.entries(node.attributes).map( 
-            value => { return {name: value[0], value: `${value[1]}`}}
+        newNode.attributes = Object.entries(node.attributes).map(
+            value => {
+                if (value[0] === 'source')
+                    return{
+                        name: value[0], 
+                        value: `this`
+                    };
+                return {
+                    name: value[0], 
+                    value: `${value[1]}`
+                }
+            }
         );
 
     }
     else if(isFunction(node)) {
+        const instance = depth.join('-') === '0' ? 'application' : generateKey(node, depth);
         newNode.type = 'INNER';
         newNode.name =  node.type.name.replace(/^(render)/g, '');
         newNode.attributes = Object.entries(node.attributes).map( 

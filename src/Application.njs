@@ -99,30 +99,6 @@ class Application extends Nullstack {
         <Head />
         <div class="container mx-10">
           NullStack Devtools
-          {/* <select class="select select-bordered select-error w-full max-w-xs" bind={this.theme}>
-            <option disabled="disabled" selected="selected">Choose your superpower</option> 
-            <option>light</option> 
-            <option>dark</option> 
-            <option>cupcake</option>
-            <option>bumblebee</option>
-            <option>emerald</option>
-            <option>corporate</option>
-            <option>synthwave</option>
-            <option>retro</option>
-            <option>cyberpunk</option>
-            <option>valentine</option>
-            <option>halloween</option>
-            <option>garden</option>
-            <option>forest</option>
-            <option>aqua</option>
-            <option>lofi</option>
-            <option>pastel</option>
-            <option>fantasy</option>
-            <option>wireframe</option>
-            <option>black</option>
-            <option>luxury</option>
-            <option>dracula</option>
-          </select> */}
             <div class="grid grid-rows-2">
               <div class="grid grid-cols-2">
                 <SearchBar nullApp={this.nullApp} />
